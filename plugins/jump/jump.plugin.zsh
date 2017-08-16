@@ -18,13 +18,16 @@ mark() {
 	else
 		MARK="$1"
 	fi
-	if read -q \?"Mark $PWD as ${MARK}? (y/n) "; then
-		mkdir -p "$MARKPATH"; ln -s "$PWD" "$MARKPATH/$MARK"
-	fi
+	mkdir -p "$MARKPATH"; ln -s "$PWD" "$MARKPATH/$MARK"
 }
 
 unmark() {
-	rm -i "$MARKPATH/$1"
+	rm -f "$MARKPATH/$1"
+}
+
+# Remove all marks
+unmarka() {
+  rm -rf "$MARKPATH"
 }
 
 marks() {
